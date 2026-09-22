@@ -12,6 +12,9 @@
     <meta property="og:url" content="https://han-fidel.github.io/Fidel/">
     <meta property="og:type" content="website">
 
+    <!-- Include QRCode.js library from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,15 +27,23 @@
         }
         header {
             text-align: center;
-            padding: 40px 0;
+            padding: 30px 0;
         }
         h1 {
             color: #2c3e50;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
         p {
             font-size: 1.1em;
             color: #555;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-bottom: 20px;
         }
         .btn {
             display: inline-block;
@@ -42,14 +53,24 @@
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
-            margin-top: 20px;
+            margin-top: 15px;
         }
         .btn:hover {
             background-color: #219653;
         }
-        .card {
-            background: white;
-            padding: 30px;
+        .qr-container {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+        }
+        .qr-container img {
+            border: 8px solid white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            border-radius: 4px;
+        }
+        .qr-section {
+            background: #fff;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             text-align: center;
@@ -69,6 +90,26 @@
             <!-- Replace # with your actual APK download link when ready -->
             <a href="#" class="btn">Download APK</a>
         </div>
+
+        <div class="qr-section">
+            <h3>Scan to Download</h3>
+            <p style="font-size: 0.95em; color: #666;">Scan this QR code with any smartphone camera to visit this page and download the app instantly.</p>
+            <div id="qrcode" class="qr-container"></div>
+        </div>
     </main>
+
+    <script>
+        // Automatically generate QR code pointing to your live GitHub Pages URL
+        window.onload = function() {
+            new QRCode(document.getElementById("qrcode"), {
+                text: "https://han-fidel.github.io/Fidel/",
+                width: 160,
+                height: 160,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        };
+    </script>
 </body>
 </html>
