@@ -111,5 +111,115 @@
             });
         };
     </script>
+    <style>
+/* Slideshow Container Styles */
+.slideshow-container {
+  max-width: 280px;
+  position: relative;
+  margin: 20px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  background: #000;
+}
+.slide {
+  display: none;
+  text-align: center;
+}
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  padding: 12px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  background-color: rgba(0,0,0,0.4);
+  user-select: none;
+}
+.next { right: 0; }
+.prev:hover, .next:hover { background-color: rgba(0,0,0,0.8); }
+.dot-container {
+  text-align: center;
+  padding: 10px;
+  background: #fff;
+  max-height: 80px;
+  overflow-y: auto;
+}
+.dot {
+  cursor: pointer;
+  height: 8px;
+  width: 8px;
+  margin: 0 3px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+.active, .dot:hover { background-color: #27ae60; }
+</style>
+
+<div class="card">
+    <h3>App Preview</h3>
+    <p>Take a sneak peek inside the learning experience:</p>
+    
+    <div class="slideshow-container">
+        <div class="slide"><img src="Screenshot_20260929_100313.jpg" alt="App Screen 1"></div>
+        <div class="slide"><img src="Screenshot_20260929_100320.jpg" alt="App Screen 2"></div>
+        <div class="slide"><img src="Screenshot_20260929_100345.jpg" alt="App Screen 3"></div>
+        <div class="slide"><img src="Screenshot_20260929_100352.jpg" alt="App Screen 4"></div>
+        <div class="slide"><img src="Screenshot_20260929_100412.jpg" alt="App Screen 5"></div>
+        <div class="slide"><img src="Screenshot_20260929_100438.jpg" alt="App Screen 6"></div>
+        <div class="slide"><img src="Screenshot_20260929_100457.jpg" alt="App Screen 7"></div>
+        <div class="slide"><img src="Screenshot_20260929_100511.jpg" alt="App Screen 8"></div>
+        <div class="slide"><img src="Screenshot_20260929_100525.jpg" alt="App Screen 9"></div>
+        <div class="slide"><img src="Screenshot_20260929_100556.jpg" alt="App Screen 10"></div>
+        <div class="slide"><img src="Screenshot_20260929_100615.jpg" alt="App Screen 11"></div>
+        <div class="slide"><img src="Screenshot_20260929_100642.jpg" alt="App Screen 12"></div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <div class="dot-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+        <span class="dot" onclick="currentSlide(7)"></span>
+        <span class="dot" onclick="currentSlide(8)"></span>
+        <span class="dot" onclick="currentSlide(9)"></span>
+        <span class="dot" onclick="currentSlide(10)"></span>
+        <span class="dot" onclick="currentSlide(11)"></span>
+        <span class="dot" onclick="currentSlide(12)"></span>
+    </div>
+</div>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+function plusSlides(n) { showSlides(slideIndex += n); }
+function currentSlide(n) { showSlides(slideIndex = n); }
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("slide");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+  for (i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(" active", ""); }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+setInterval(() => { plusSlides(1); }, 4000);
+</script>
 </body>
 </html>
